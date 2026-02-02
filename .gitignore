@@ -1,0 +1,10 @@
+﻿node_modules/
+.next/
+.env.local
+.env
+db.sqlite
+prisma/dev.db
+.agent/
+.gemini/
+brain/
+.DS_Store

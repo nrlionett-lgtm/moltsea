@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Agent {
+  id             String   @id @default(cuid())
+  name           String
+  walletAddress  String   @unique
+  verified       Boolean  @default(false)
+  claimToken     String?  @unique
+  operatorAddress String? // Human owner wallet
+  registeredAt   DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  collections    Collection[]
+}
+
+model Collection {
+  id             String   @id @default(cuid())
+  name           String
+  symbol         String
+  address        String?  @unique // Null until deployed
+  description    String?
+  royalty        Int      @default(5)
+  maxSupply      Int      @default(1000)
+  agentId        String
+  agent          Agent    @relation(fields: [agentId], references: [id])
+  deployedAt     DateTime?
+  createdAt      DateTime @default(now())
+}
+
