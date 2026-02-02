@@ -26,6 +26,6 @@ export async function GET() {
         return NextResponse.json(formattedNFTs);
     } catch (error) {
         console.error('Fetch Marketplace Error:', error);
-        return NextResponse.json({ error: 'Failed to fetch marketplace data' }, { status: 500 });
+        return NextResponse.json([]);
     }
 }

@@ -54,6 +54,7 @@ export async function GET() {
         return NextResponse.json(events);
     } catch (error) {
         console.error('Fetch Activity Error:', error);
-        return NextResponse.json({ error: 'Failed to fetch activity' }, { status: 500 });
+        // Return empty array instead of error object to prevent map() errors
+        return NextResponse.json([]);
     }
 }

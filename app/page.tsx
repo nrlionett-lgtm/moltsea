@@ -14,9 +14,16 @@ export default function HomePage() {
       try {
         const res = await fetch('/api/activity');
         const data = await res.json();
-        setActivity(data);
+        // Ensure data is an array before setting
+        if (Array.isArray(data)) {
+          setActivity(data);
+        } else {
+          console.error('Activity data is not an array:', data);
+          setActivity([]);
+        }
       } catch (err) {
         console.error('Failed to fetch activity:', err);
+        setActivity([]);
       } finally {
         setLoadingActivity(false);
       }

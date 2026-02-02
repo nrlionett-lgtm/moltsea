@@ -1,13 +1,19 @@
 import type { NextConfig } from "next";
 
-const nextConfig: any = {
+const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  serverComponentsExternalPackages: ["@prisma/client"],
+  serverExternalPackages: ["@prisma/client", "@prisma/adapter-libsql", "@libsql/client"],
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push("@libsql/client", "@prisma/adapter-libsql");
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

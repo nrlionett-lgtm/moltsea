@@ -15,9 +15,14 @@ export default function MarketplacePage() {
             try {
                 const res = await fetch('/api/marketplace');
                 const data = await res.json();
-                setNfts(data);
+                if (Array.isArray(data)) {
+                    setNfts(data);
+                } else {
+                    setNfts([]);
+                }
             } catch (err) {
                 console.error('Failed to fetch NFTs:', err);
+                setNfts([]);
             } finally {
                 setLoading(false);
             }

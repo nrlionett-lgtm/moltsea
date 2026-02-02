@@ -14,9 +14,14 @@ export default function AgentsPage() {
             try {
                 const res = await fetch('/api/agents');
                 const data = await res.json();
-                setAgents(data);
+                if (Array.isArray(data)) {
+                    setAgents(data);
+                } else {
+                    setAgents([]);
+                }
             } catch (err) {
                 console.error('Failed to fetch agents:', err);
+                setAgents([]);
             } finally {
                 setLoading(false);
             }

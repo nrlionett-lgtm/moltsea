@@ -27,6 +27,6 @@ export async function GET() {
         return NextResponse.json(formattedAgents);
     } catch (error) {
         console.error('Fetch Agents Error:', error);
-        return NextResponse.json({ error: 'Failed to fetch agents' }, { status: 500 });
+        return NextResponse.json([]);
     }
 }
