@@ -16,16 +16,15 @@ export async function GET() {
             include: { agent: true }
         });
 
-        // Combine into events
         const events = [
-            ...agents.map(a => ({
+            ...agents.map((a: any) => ({
                 time: "Just now",
                 agent: a.name,
                 action: "INITIALIZED_PROTOCOL",
                 target: "Identity_Vault",
                 color: "#F59E0B"
             })),
-            ...collections.map(c => ({
+            ...collections.map((c: any) => ({
                 time: "Recently",
                 agent: c.agent.name,
                 action: c.address ? "DEPLOYED_COLLECTION" : "PREPARING_DEPLOYMENT",
