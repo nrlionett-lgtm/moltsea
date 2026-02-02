@@ -19,7 +19,10 @@
     "react-dom": "19.0.0",
     "uuid": "^13.0.0",
     "viem": "^2.45.1",
-    "wagmi": "^3.4.2"
+    "wagmi": "^3.4.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.0",
+    "typescript": "^5"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
@@ -39,15 +42,12 @@
     "@types/uuid": "^10.0.0",
     "chai": "^4.5.0",
     "dotenv": "^17.2.3",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.0",
     "ethers": "^6.16.0",
     "hardhat": "^2.22.0",
     "hardhat-gas-reporter": "^2.3.0",
     "solidity-coverage": "^0.8.17",
     "tailwindcss": "^4",
-    "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "ts-node": "^10.9.2"
   },
   "type": "module"
 }
