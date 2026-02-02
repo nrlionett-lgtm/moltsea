@@ -4,22 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy"
   },
   "dependencies": {
-    "@libsql/client": "^0.17.0",
-    "@prisma/adapter-libsql": "^7.3.0",
-    "@prisma/client": "^7.3.0",
+    "@prisma/client": "^6.19.2",
     "@rainbow-me/rainbowkit": "^2.2.10",
     "@tanstack/react-query": "^5.90.20",
     "@wagmi/core": "^3.3.2",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
     "next": "15.1.0",
-    "prisma": "^7.3.0",
+    "prisma": "^6.19.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "typescript": "^5",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@coinbase/wallet-sdk": "^4.3.7",
     "@metamask/sdk": "^0.34.0",
+    "@netlify/plugin-nextjs": "^5.15.7",
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
     "@nomicfoundation/hardhat-ethers": "^3.1.0",
     "@nomicfoundation/hardhat-network-helpers": "^3.0.3",

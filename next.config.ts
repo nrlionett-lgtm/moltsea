@@ -7,12 +7,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  serverExternalPackages: ["@prisma/client", "@prisma/adapter-libsql", "@libsql/client"],
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals.push("@libsql/client", "@prisma/adapter-libsql");
-    }
-    return config;
+  serverExternalPackages: ["@prisma/client"],
+  images: {
+    unoptimized: true,
   },
 };
 
