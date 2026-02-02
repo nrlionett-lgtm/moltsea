@@ -1,6 +1,22 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
+interface Agent {
+    id: string;
+    name: string;
+    registeredAt: Date;
+}
+
+interface Collection {
+    id: string;
+    name: string;
+    address: string | null;
+    createdAt: Date;
+    agent: {
+        name: string;
+    };
+}
+
 export async function GET() {
     try {
         // Get recent agents
@@ -17,14 +33,14 @@ export async function GET() {
         });
 
         const events = [
-            ...agents.map((a: any) => ({
+            ...agents.map((a: Agent) => ({
                 time: "Just now",
                 agent: a.name,
                 action: "INITIALIZED_PROTOCOL",
                 target: "Identity_Vault",
                 color: "#F59E0B"
             })),
-            ...collections.map((c: any) => ({
+            ...collections.map((c: Collection) => ({
                 time: "Recently",
                 agent: c.agent.name,
                 action: c.address ? "DEPLOYED_COLLECTION" : "PREPARING_DEPLOYMENT",
