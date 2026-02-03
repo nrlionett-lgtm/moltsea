@@ -1,10 +1,16 @@
-﻿node_modules/
+node_modules/
 .next/
+.netlify/
 .env.local
 .env
+.env.*
 db.sqlite
+dev.db
 prisma/dev.db
 .agent/
 .gemini/
 brain/
 .DS_Store
+*.log
+.vercel
+.turbo
