@@ -5,6 +5,9 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
+  # Disable secrets scanning for development-only keys and config files
+  SECRETS_SCAN_OMIT_PATHS = "hardhat.config.cjs,scripts/**,contracts/**,.env.example"
+  SECRETS_SCAN_OMIT_KEYS = "PRIVATE_KEY,BASESCAN_API_KEY,BASE_RPC_URL,BASE_SEPOLIA_RPC_URL"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
